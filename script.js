@@ -40,49 +40,35 @@
     if (play && play.catch) play.catch(function () {});
   })();
 
-  /* ---------- Галерея ---------- */
+  /* ---------- Галерея работ ----------
 
-  // Фото скачаны с карточки 2ГИС и лежат локально в assets/gallery — не зависим
-  // от чужого CDN. Каждое в двух размерах: -950 в сетку, -1920 в лайтбокс.
-  function g(slug, tier) { return 'assets/gallery/' + slug + '-' + tier + '.jpg'; }
+     Файлы кладутся в assets/gallery/ ровно с этими именами — править код
+     не нужно. Формат: один .jpg на позицию, без суффиксов размера.
+     Справа — номер фото в полном альбоме 2ГИС (65 шт):
+     https://2gis.ru/omsk/gallery/firm/70000001047108090
 
-  var PHOTOS = [
-    { s: 'work-17', a: 'До и после: осветление и тонирование' },
-    { s: 'work-02', a: 'Медное окрашивание' },
-    { s: 'work-06', a: 'Серебристое тонирование' },
-    { s: 'work-12', a: 'Платиновый блонд' },
-    { s: 'work-15', a: 'Air touch, тёплый блонд' },
-    { s: 'interior-1', a: 'Интерьер студии' },
-    { s: 'work-04', a: 'Пепельный блонд, укладка волнами' },
-    { s: 'work-09', a: 'Каре с тёмным оттенком' },
-    { s: 'work-13', a: 'Ламинирование ресниц' },
-    { s: 'work-01', a: 'Холодный блонд, сложное окрашивание' },
-    { s: 'work-07', a: 'Причёска с плетением' },
-    { s: 'work-05', a: 'Стрижка на длинные волосы' },
-    { s: 'work-16', a: 'Холодный блонд на длинные волосы' },
-    { s: 'work-18', a: 'Макияж' },
-    { s: 'work-03', a: 'Тонирование, длинные волосы' },
-    { s: 'work-11', a: 'Блонд на длинные волосы' },
-    { s: 'work-19', a: 'Макияж и укладка' },
-    { s: 'work-14', a: 'Пепельный блонд' },
-    { s: 'work-20', a: 'Пепельный блонд, длинные волосы' },
-    { s: 'interior-2', a: 'Уходовая косметика в студии' },
-    { s: 'work-08', a: 'Короткая стрижка' },
-    { s: 'work-10', a: 'Длинные волосы после окрашивания' },
-    { s: 'work-21', a: 'Русый с пепельным тонированием' },
-    { s: 'outside-2', a: 'Вход в студию' }
+       work-01.jpg → №29      work-07.jpg → №4      work-13.jpg → №16  (ПК)
+       work-02.jpg → №3       work-08.jpg → №6      work-14.jpg → №57 (ПК)
+       work-03.jpg → №26      work-09.jpg → №7      work-15.jpg → №43 (ПК)
+       work-04.jpg → №5       work-10.jpg → №8      work-16.jpg → №9  (ПК)
+       work-05.jpg → №23      work-11.jpg → №15     video-02.jpg → видео №2 (ПК)
+       work-06.jpg → №32      work-12.jpg → №17
+
+     На мобильном показываются первые 12, остальные 5 помечены desktopOnly. */
+
+  var GALLERY = [
+    { f: 'work-01' }, { f: 'work-02' }, { f: 'work-03' }, { f: 'work-04' },
+    { f: 'work-05' }, { f: 'work-06' }, { f: 'work-07' }, { f: 'work-08' },
+    { f: 'work-09' }, { f: 'work-10' }, { f: 'work-11' }, { f: 'work-12' },
+    { f: 'work-13', desktopOnly: true },
+    { f: 'work-14', desktopOnly: true },
+    { f: 'work-15', desktopOnly: true },
+    { f: 'work-16', desktopOnly: true },
+    { f: 'video-02', desktopOnly: true, isVideo: true }
   ];
 
-  // Превью ролика из раздела «Видео» карточки. Сам mp4 2ГИС наружу не отдаёт —
-  // положите файл рядом и впишите путь в video: плитка заиграет при наведении.
-  var VIDEO = {
-    poster: g('video-1', '950'),
-    a: 'Уход за волосами — видео студии',
-    video: '',
-    link: 'https://2gis.ru/omsk/gallery/firm/70000001047108090'
-  };
-
-  var SIZES = '(max-width:420px) 100vw, (max-width:760px) 60vw, (max-width:1100px) 40vw, 30vw';
+  var GAL_DIR = 'assets/gallery/';
+  var GIS_GALLERY = 'https://2gis.ru/omsk/gallery/firm/70000001047108090';
 
   var gal = document.getElementById('gal');
   var lbItems = [];
@@ -90,68 +76,47 @@
   if (gal) {
     var frag = document.createDocumentFragment();
 
-    PHOTOS.forEach(function (p, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'gitem' + (p.span ? ' gitem--' + p.span : '');
-      b.dataset.i = String(i);
-      b.setAttribute('aria-label', 'Открыть фото: ' + p.a);
+    GALLERY.forEach(function (p, i) {
+      var src = GAL_DIR + p.f + '.jpg';
+      var cap = p.isVideo ? 'Видео студии' : 'Работа студии';
+
+      var el;
+      if (p.isVideo) {
+        el = document.createElement('a');
+        el.href = GIS_GALLERY;
+        el.target = '_blank';
+        el.rel = 'noopener';
+      } else {
+        el = document.createElement('button');
+        el.type = 'button';
+        el.dataset.i = String(i);
+      }
+      el.className = 'gitem' + (p.desktopOnly ? ' gitem--desktop' : '');
+      el.setAttribute('aria-label', p.isVideo ? cap : 'Открыть фото: ' + cap);
 
       var img = document.createElement('img');
-      img.src = g(p.s, '950');
-      img.srcset = g(p.s, '950') + ' 950w, ' + g(p.s, '1920') + ' 1920w';
-      img.sizes = SIZES;
-      img.width = 950;
-      img.height = 633;
-      img.alt = p.a;
-      img.loading = i < 6 ? 'eager' : 'lazy';
+      img.src = src;
+      img.alt = cap;
+      img.loading = i < 4 ? 'eager' : 'lazy';
       img.decoding = 'async';
+      // Пока файла нет — плитка честно говорит об этом, а не висит пустой
+      img.addEventListener('error', function () {
+        el.classList.add('is-missing');
+        el.setAttribute('data-missing', p.f + '.jpg');
+      });
+      el.appendChild(img);
 
-      b.appendChild(img);
-      frag.appendChild(b);
-      lbItems.push({ src: g(p.s, '1920'), fallback: g(p.s, '950'), cap: p.a });
-    });
-
-    // Плитка с видео
-    var v = document.createElement(VIDEO.video ? 'button' : 'a');
-    v.className = 'gitem';
-    if (VIDEO.video) {
-      v.type = 'button';
-    } else {
-      v.href = VIDEO.link;
-      v.target = '_blank';
-      v.rel = 'noopener';
-    }
-    v.setAttribute('aria-label', VIDEO.a);
-    v.innerHTML =
-      '<span class="gitem__badge">Видео</span>' +
-      '<span class="gitem__play"><span>' +
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' +
-      '</span></span>';
-
-    if (VIDEO.video) {
-      var vid = document.createElement('video');
-      vid.src = VIDEO.video;
-      vid.poster = VIDEO.poster;
-      vid.muted = true;
-      vid.loop = true;
-      vid.playsInline = true;
-      vid.preload = 'metadata';
-      v.insertBefore(vid, v.firstChild);
-      if (fine && !reduced) {
-        v.addEventListener('mouseenter', function () { vid.play().catch(function () {}); });
-        v.addEventListener('mouseleave', function () { vid.pause(); vid.currentTime = 0; });
+      if (p.isVideo) {
+        el.insertAdjacentHTML('beforeend',
+          '<span class="gitem__badge">Видео</span>' +
+          '<span class="gitem__play"><span>' +
+          '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' +
+          '</span></span>');
       }
-    } else {
-      var vimg = document.createElement('img');
-      vimg.src = VIDEO.poster;
-      vimg.alt = VIDEO.a;
-      vimg.width = 950;
-      vimg.height = 633;
-      vimg.loading = 'lazy';
-      v.insertBefore(vimg, v.firstChild);
-    }
-    frag.appendChild(v);
+
+      frag.appendChild(el);
+      lbItems.push({ src: src, fallback: src, cap: cap, el: el });
+    });
 
     gal.appendChild(frag);
   }
@@ -293,14 +258,12 @@
 
     s.appendChild(rc.rectangle(3, 3, w - 6, h - 6, o));
 
+    // Перегородки только на широком экране: на мобильном шаги стали
+    // горизонтальной каруселью, линии поперёк неё резали бы карточки.
     if (w > 860) {
       var t = (w - 6) / 3;
       s.appendChild(rc.line(3 + t, 28, 3 + t, h - 28, o));
       s.appendChild(rc.line(3 + t * 2, 28, 3 + t * 2, h - 28, o));
-    } else {
-      var q = (h - 6) / 3;
-      s.appendChild(rc.line(28, 3 + q, w - 28, 3 + q, o));
-      s.appendChild(rc.line(28, 3 + q * 2, w - 28, 3 + q * 2, o));
     }
     trayHost.replaceChildren(s);
   }
@@ -413,7 +376,7 @@
 
     function swapPhoto(tab) {
       if (!svcImg || !svcMedia) return;
-      var next = 'assets/gallery/' + tab.dataset.photo + '-950.jpg';
+      var next = 'assets/photos/' + tab.dataset.photo + '-950.jpg';
       if (svcImg.getAttribute('src') === next) return;
 
       // Подгружаем заранее и меняем только после загрузки, иначе на месте
@@ -522,6 +485,21 @@
   var idx = 0;
   var lastFocus = null;
 
+  // На мобильном часть плиток скрыта (только для ПК) — стрелки их пропускают,
+  // иначе в лайтбоксе всплывёт фото, которого в мобильной галерее нет.
+  function visible(i) {
+    var el = lbItems[i] && lbItems[i].el;
+    return !!el && el.offsetParent !== null;
+  }
+  function seek(from, dir) {
+    var n = lbItems.length;
+    for (var k = 1; k <= n; k++) {
+      var i = ((from + dir * k) % n + n) % n;
+      if (visible(i)) return i;
+    }
+    return from;
+  }
+
   function show(i) {
     idx = (i + lbItems.length) % lbItems.length;
     var it = lbItems[idx];
@@ -559,15 +537,15 @@
   }
 
   document.getElementById('lb-x').addEventListener('click', closeLb);
-  document.getElementById('lb-p').addEventListener('click', function () { show(idx - 1); });
-  document.getElementById('lb-n').addEventListener('click', function () { show(idx + 1); });
+  document.getElementById('lb-p').addEventListener('click', function () { show(seek(idx, -1)); });
+  document.getElementById('lb-n').addEventListener('click', function () { show(seek(idx, 1)); });
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
 
   document.addEventListener('keydown', function (e) {
     if (!lb.hidden) {
       if (e.key === 'Escape') closeLb();
-      if (e.key === 'ArrowLeft') show(idx - 1);
-      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(seek(idx, -1));
+      if (e.key === 'ArrowRight') show(seek(idx, 1));
       return;
     }
     if (e.key === 'Escape' && !mobmenu.hidden) closeMenu();
@@ -578,7 +556,7 @@
   lb.addEventListener('touchstart', function (e) { tx = e.changedTouches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 48) show(dx > 0 ? idx - 1 : idx + 1);
+    if (Math.abs(dx) > 48) show(seek(idx, dx > 0 ? -1 : 1));
   }, { passive: true });
 
   /* ---------- Заявка уходит в WhatsApp ---------- */
