@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мастерская по созданию красоты — Омск · Дизайнер ваших волос</title>
+<meta name="description" content="Студия «Мастерская по созданию красоты» в Омске: стрижки, сложное окрашивание, уход, брови и ресницы, визаж. Рейтинг 5,0 на 2ГИС по 119 оценкам. ул. Перелёта, 32. Запись: +7 923 045-69-69.">
+<meta name="theme-color" content="#14100D">
+<meta property="og:title" content="Мастерская по созданию красоты — Омск">
+<meta property="og:description" content="Дизайнер ваших волос. Стрижки, сложное окрашивание, уход, брови и ресницы. 5,0 на 2ГИС.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/gallery/video-1-1920.jpg">
+<link rel="icon" href="assets/brand/logo.jpg" type="image/jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/gallery/video-1-1920.jpg" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Onest:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#services">Перейти к услугам</a>
+
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <!-- Рваный край: шум смещает пиксели контура, получается разрыв бумаги,
+         а не гладкая кривая. Разные seed — чтобы края не повторялись. -->
+    <filter id="torn-a" x="-4%" y="-40%" width="108%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.013 0.075" numOctaves="4" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="torn-b" x="-4%" y="-40%" width="108%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.017 0.062" numOctaves="4" seed="19" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="torn-c" x="-4%" y="-40%" width="108%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011 0.089" numOctaves="5" seed="41" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="19" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__ring"><span class="cursor__label"></span></div>
+  <div class="cursor__dot"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="brand" href="#top" aria-label="Мастерская по созданию красоты — на главную">
+      <span class="brand__mark" aria-hidden="true"><img src="assets/brand/logo.jpg" alt="" width="320" height="320"></span>
+      <span class="brand__txt">
+        <span class="brand__name">Мастерская</span>
+        <span class="brand__sub">по созданию красоты</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Основная навигация">
+      <a href="#works">Работы</a>
+      <a href="#why">О студии</a>
+      <a href="#team">Мастера</a>
+      <a href="#services">Цены</a>
+      <a href="#contact">Где мы</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+
+    <div class="nav__act">
+      <a class="nav__tel" href="tel:+79230456969">+7 923 045-69-69</a>
+      <a class="btn btn--sm" href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Записаться</a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobmenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobmenu" id="mobmenu" hidden>
+  <nav aria-label="Мобильная навигация">
+    <a href="#trust"><span>01</span>Как записаться</a>
+    <a href="#works"><span>02</span>Работы</a>
+    <a href="#why"><span>03</span>О студии</a>
+    <a href="#team"><span>04</span>Мастера</a>
+    <a href="#services"><span>05</span>Цены</a>
+    <a href="#contact"><span>06</span>Где мы</a>
+    <a href="#reviews"><span>07</span>Отзывы</a>
+    <a href="#faq"><span>08</span>Вопросы</a>
+  </nav>
+  <div class="mobmenu__foot">
+    <a class="btn btn--block" href="tel:+79230456969">+7 923 045-69-69</a>
+    <p>ул. Перелёта, 32 · Прибрежный · Омск</p>
+  </div>
+</div>
+
+<aside class="rail" aria-label="Быстрая связь">
+  <a class="rail__b" href="https://wa.me/79230456969" target="_blank" rel="noopener" data-tip="WhatsApp" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.95-4.69-4.14-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.96.87 2.1.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.3.36-.42.48-.14.14-.29.29-.12.57.16.28.73 1.2 1.56 1.95 1.07.95 1.98 1.25 2.26 1.39.28.14.44.12.61-.07.16-.18.7-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.66-.17 1.34z"/></svg>
+  </a>
+  <a class="rail__b" href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener" data-tip="Telegram" aria-label="Написать в Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3 18.9 19.1c-.23 1.02-.84 1.27-1.7.79l-4.7-3.47-2.27 2.18c-.25.25-.46.46-.95.46l.34-4.79 8.72-7.88c.38-.34-.08-.53-.59-.19l-10.78 6.79-4.64-1.45c-1.01-.32-1.03-1.01.21-1.5l18.14-6.99c.84-.31 1.58.19 1.26 1.25z"/></svg>
+  </a>
+  <a class="rail__b rail__b--max" href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener" data-tip="Max" aria-label="Написать в Max">
+    <span class="rail__txt">MAX</span>
+  </a>
+  <a class="rail__b rail__b--call" href="tel:+79230456969" data-tip="Позвонить" aria-label="Позвонить в студию">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</aside>
+
+<nav class="dock" aria-label="Быстрая связь">
+  <a href="tel:+79230456969"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Позвонить</span></a>
+  <a href="https://wa.me/79230456969" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.55-3.95-4.69-4.14-.14-.18-1.13-1.5-1.13-2.87s.72-2.03.97-2.31c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.96.87 2.1.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.3.36-.42.48-.14.14-.29.29-.12.57.16.28.73 1.2 1.56 1.95 1.07.95 1.98 1.25 2.26 1.39.28.14.44.12.61-.07.16-.18.7-.81.88-1.09.18-.28.37-.23.62-.14.25.09 1.6.75 1.87.89.28.14.46.21.53.32.07.12.07.66-.17 1.34z"/></svg><span>WhatsApp</span></a>
+  <a href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3 18.9 19.1c-.23 1.02-.84 1.27-1.7.79l-4.7-3.47-2.27 2.18c-.25.25-.46.46-.95.46l.34-4.79 8.72-7.88c.38-.34-.08-.53-.59-.19l-10.78 6.79-4.64-1.45c-1.01-.32-1.03-1.01.21-1.5l18.14-6.99c.84-.31 1.58.19 1.26 1.25z"/></svg><span>Telegram</span></a>
+  <a class="dock__cta" href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener"><span>Записаться</span></a>
+</nav>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero__media">
+    <img src="assets/gallery/video-1-1920.jpg"
+         srcset="assets/gallery/video-1-950.jpg 950w,
+                 assets/gallery/video-1-1920.jpg 1920w"
+         sizes="100vw" width="1920" height="1080"
+         alt="Мастер студии моет голову клиентке перед стрижкой" fetchpriority="high">
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="hero__in">
+    <p class="hero__eyebrow reveal">
+      <span class="dotmark" aria-hidden="true"></span>
+      Омск · студия Марии Булгаковой
+    </p>
+    <h1 class="hero__title reveal" data-d="60">
+      <span class="l1">Дизайнер</span>
+      <span class="l2">ваших волос</span>
+    </h1>
+    <p class="hero__lead reveal" data-d="120">
+      Стрижки, сложное окрашивание, уход, брови и ресницы, визаж.
+      Работаем по предварительной записи — время только ваше.
+    </p>
+
+    <div class="hero__cta reveal" data-d="180">
+      <a class="btn btn--lg" href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Записаться</a>
+      <a class="btn btn--ghost btn--lg" href="#services">Услуги и цены</a>
+    </div>
+
+    <dl class="hero__meta reveal" data-d="240">
+      <div><dt>Адрес</dt><dd>ул. Перелёта, 32</dd></div>
+      <div><dt>Работаем</dt><dd>с 10:00, по записи</dd></div>
+      <div><dt>Оплата</dt><dd>карта · QR · наличные</dd></div>
+    </dl>
+  </div>
+
+  <a class="hero__scroll" href="#trust" aria-label="Листать вниз">
+    <span class="hero__scroll-line" aria-hidden="true"></span>
+    <span class="hero__scroll-txt">листайте</span>
+  </a>
+
+  <svg class="edge edge--hero" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path filter="url(#torn-a)" d="M0,78 L96,61 L188,85 L266,53 L372,72 L455,45 L548,81 L640,57 L735,89 L820,49 L910,75 L1005,43 L1096,80 L1180,55 L1275,87 L1360,51 L1440,70 L1440,168 L0,168 Z"/>
+  </svg>
+</section>
+
+<section class="route" id="trust">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">01 — Как попасть</p>
+      <h2 class="shead__h">Твой маршрут — 3 шага</h2>
+      <p class="shead__p">Без приложений и регистраций: написали, договорились, пришли.</p>
+    </header>
+
+    <div class="route__object reveal" data-d="80">
+      <div class="route__tools" aria-hidden="true"></div>
+
+      <div class="route__box">
+        <div class="route__tray" aria-hidden="true"></div>
+        <ol class="route__steps">
+          <li>
+            <span class="route__n" aria-hidden="true">01</span>
+            <h3>Пишешь или звонишь</h3>
+            <p>WhatsApp, Telegram, Max или обычный звонок — что удобнее.</p>
+            <div class="route__links">
+              <a href="https://wa.me/79230456969" target="_blank" rel="noopener">WhatsApp</a>
+              <a href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener">Telegram</a>
+              <a href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Max</a>
+              <a href="tel:+79230456969">+7 923 045-69-69</a>
+            </div>
+          </li>
+          <li>
+            <span class="route__n" aria-hidden="true">02</span>
+            <h3>Договариваемся о времени</h3>
+            <p>Студия работает только по предварительной записи. Открываемся в 10:00 — слот будет только ваш.</p>
+          </li>
+          <li>
+            <span class="route__n" aria-hidden="true">03</span>
+            <h3>Приходишь на Перелёта, 32</h3>
+            <p>Прибрежный микрорайон, Кировский округ. Оплата картой, наличными или по QR-коду, для гостей есть Wi-Fi.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="route__cta reveal" data-d="140">
+      <a class="btn btn--lg" href="https://wa.me/79230456969" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="btn btn--ghost btn--lg" href="tel:+79230456969">Позвонить</a>
+    </div>
+  </div>
+</section>
+
+<section class="works" id="works">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">02 — Портфолио</p>
+      <h2 class="shead__h">Галерея работ</h2>
+      <p class="shead__p">Окрашивания, стрижки, брови и макияж — реальные фотографии студии с карточки 2ГИС.</p>
+    </header>
+  </div>
+
+  <div class="gal" id="gal"></div>
+
+  <div class="wrap">
+    <a class="btn btn--ghost works__all" href="https://2gis.ru/omsk/gallery/firm/70000001047108090" target="_blank" rel="noopener">Вся галерея — 65 фото и 2 видео в 2ГИС</a>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="grain" aria-hidden="true"></div>
+  <svg class="edge edge--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path filter="url(#torn-b)" d="M0,52 L88,75 L175,43 L280,69 L360,37 L468,63 L560,33 L668,71 L752,41 L858,67 L945,35 L1052,73 L1140,45 L1248,65 L1338,39 L1440,60 L1440,168 L0,168 Z"/>
+  </svg>
+
+  <div class="wrap">
+    <header class="whead reveal">
+      <p class="shead__k">01 — О студии</p>
+      <h2 class="whead__h">
+        Мастерская — это<br>про <span class="mark">работу руками</span>
+      </h2>
+      <p class="whead__p">
+        Четыре вещи, которые клиенты отмечают чаще всего. Мы их не придумывали:
+        это дословно из блока «Люди говорят» в карточке 2ГИС.
+      </p>
+    </header>
+
+    <div class="plates">
+      <article class="plate reveal" data-fig="chair">
+        <div class="plate__frame" aria-hidden="true"></div>
+        <div class="plate__fig"></div>
+        <div class="plate__body">
+          <p class="plate__no">рис. 01</p>
+          <h3>Приятная атмосфера</h3>
+          <p>Небольшая студия вместо конвейера. Вас не торопят, не сажают в очередь и не ведут через шумный зал — только предварительная запись.</p>
+        </div>
+      </article>
+
+      <article class="plate reveal" data-d="80" data-fig="scissors">
+        <div class="plate__frame" aria-hidden="true"></div>
+        <div class="plate__fig"></div>
+        <div class="plate__body">
+          <p class="plate__no">рис. 02</p>
+          <h3>Вежливый персонал</h3>
+          <p>«ВСЕ девочки в студии очень милые, улыбчивые, доброжелательные» — это не наш слоган, это цитата из отзыва. Так про нас пишут регулярно.</p>
+        </div>
+      </article>
+
+      <article class="plate reveal" data-d="160" data-fig="cup">
+        <div class="plate__frame" aria-hidden="true"></div>
+        <div class="plate__fig"></div>
+        <div class="plate__body">
+          <p class="plate__no">рис. 03</p>
+          <h3>Вкусный кофе</h3>
+          <p>Окрашивание — это часы в кресле. Поэтому кофе у нас попал в список того, что клиенты отмечают отдельно. Плюс Wi-Fi, если нужно поработать.</p>
+        </div>
+      </article>
+
+      <article class="plate reveal" data-d="240" data-fig="mirror">
+        <div class="plate__frame" aria-hidden="true"></div>
+        <div class="plate__fig"></div>
+        <div class="plate__body">
+          <p class="plate__no">рис. 04</p>
+          <h3>Чисто и уютно</h3>
+          <p>Порядок на рабочем месте — часть результата. Инструмент, уход и материалы подбираются под ваши волосы, а не «что осталось».</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <svg class="edge edge--why" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path filter="url(#torn-c)" d="M0,66 L102,41 L196,73 L288,47 L390,81 L478,49 L578,77 L672,43 L768,71 L860,37 L962,67 L1050,41 L1152,75 L1244,47 L1340,69 L1440,45 L1440,168 L0,168 Z"/>
+  </svg>
+</section>
+
+<section class="team" id="team">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">03 — Команда</p>
+      <h2 class="shead__h">Мастера студии</h2>
+      <p class="shead__p">Имена и специализации — из отзывов клиентов на 2ГИС. К каждому мастеру можно записаться по имени.</p>
+    </header>
+
+    <div class="team__grid">
+      <article class="mcard mcard--lead reveal" data-ini="М">
+        <img class="mcard__bg" src="assets/gallery/work-02-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">топ-мастер · владелица студии</span>
+          <h3 class="mcard__name">Мария</h3>
+          <p class="mcard__spec">Окрашивание любой сложности, стрижки</p>
+          <p class="mcard__q"><q>Профессионал своего дела! Выполнит любой ваш каприз</q><cite>Анна В., отзыв на 2ГИС</cite></p>
+        </div>
+      </article>
+
+      <article class="mcard reveal" data-d="60" data-ini="А">
+        <img class="mcard__bg" src="assets/gallery/work-15-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">мастер</span>
+          <h3 class="mcard__name">Ангелина</h3>
+          <p class="mcard__spec">Сложное окрашивание, air touch</p>
+          <p class="mcard__q"><q>Приятная в общении и профи в своём деле</q><cite>Екатерина Мотовилова, отзыв на 2ГИС</cite></p>
+        </div>
+      </article>
+
+      <article class="mcard reveal" data-d="100" data-ini="Т">
+        <img class="mcard__bg" src="assets/gallery/work-06-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">мастер</span>
+          <h3 class="mcard__name">Татьяна</h3>
+          <p class="mcard__spec">Сложное окрашивание, тонирование, брови</p>
+          <p class="mcard__q"><q>Делала у неё сложное окрашивание. Получилось классно</q><cite>Yuliya Panchenko, отзыв на 2ГИС</cite></p>
+        </div>
+      </article>
+
+      <article class="mcard reveal" data-d="140" data-ini="Ю">
+        <img class="mcard__bg" src="assets/gallery/work-09-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">мастер</span>
+          <h3 class="mcard__name">Юлиана</h3>
+          <p class="mcard__spec">Стрижки, восстановление длины</p>
+          <p class="mcard__q"><q>Волосы ожили, стали выглядеть ухоженными и объёмными</q><cite>Полина Килькова, отзыв на 2ГИС</cite></p>
+        </div>
+      </article>
+
+      <article class="mcard reveal" data-d="180" data-ini="О">
+        <img class="mcard__bg" src="assets/gallery/work-13-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">мастер</span>
+          <h3 class="mcard__name">Ольга</h3>
+          <p class="mcard__spec">Брови, «счастье для волос», уходовые процедуры</p>
+          <p class="mcard__q"><q>Моё сердце принадлежит мастеру по бровям Ольге</q><cite>Марина М., отзыв на 2ГИС</cite></p>
+        </div>
+      </article>
+
+      <article class="mcard reveal" data-d="220" data-ini="Н">
+        <img class="mcard__bg" src="assets/gallery/work-05-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <span class="mcard__mono" aria-hidden="true"></span>
+        <div class="mcard__body">
+          <span class="mcard__role">мастер</span>
+          <h3 class="mcard__name">Наталья</h3>
+          <p class="mcard__spec">Стрижки</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="team__note">
+      Личных фотографий мастеров в открытых источниках нет, поэтому на карточках — работы студии
+      по профилю мастера, а не портреты. Имена, специализации и цитаты взяты из отзывов на 2ГИС.
+    </p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">04 — Прайс</p>
+      <h2 class="shead__h">Услуги и цены</h2>
+      <p class="shead__p">
+        Цены зависят от длины и густоты волос, поэтому указаны вилкой — точную сумму мастер
+        называет на консультации перед работой. Это ориентир, а не публичная оферта.
+      </p>
+    </header>
+
+    <div class="pills reveal" data-d="60" role="tablist" aria-label="Категории услуг">
+      <button class="pill is-on" role="tab" aria-selected="true" aria-controls="p-hair" id="t-hair" data-photo="work-05" data-cap="Стрижки">Стрижки</button>
+      <button class="pill" role="tab" aria-selected="false" aria-controls="p-color" id="t-color" data-photo="work-02" data-cap="Окрашивание">Окрашивание</button>
+      <button class="pill" role="tab" aria-selected="false" aria-controls="p-care" id="t-care" data-photo="video-1" data-cap="Уход">Уход</button>
+      <button class="pill" role="tab" aria-selected="false" aria-controls="p-brow" id="t-brow" data-photo="work-13" data-cap="Брови и ресницы">Брови и ресницы</button>
+      <button class="pill" role="tab" aria-selected="false" aria-controls="p-look" id="t-look" data-photo="work-07" data-cap="Образы">Образы</button>
+    </div>
+
+    <div class="svc reveal" data-d="100">
+      <figure class="svc__media">
+        <img id="svc-img" src="assets/gallery/work-05-950.jpg" alt="" width="950" height="633" loading="lazy">
+        <figcaption id="svc-cap">Стрижки</figcaption>
+      </figure>
+
+      <div class="svc__lists">
+        <div class="panel is-on" id="p-hair" role="tabpanel" aria-labelledby="t-hair" tabindex="0">
+          <h3 class="grp">У мастера студии</h3>
+          <ul class="price">
+            <li><span class="price__n">Женская стрижка</span><span class="price__v">1 200 – 1 500 ₽</span></li>
+            <li><span class="price__n">Мужская стрижка<em>стрижка, мытьё, укладка феном</em></span><span class="price__v">800 – 1 000 ₽</span></li>
+            <li><span class="price__n">Детская стрижка</span><span class="price__v">600 – 800 ₽</span></li>
+            <li><span class="price__n">Чёлка</span><span class="price__v">300 ₽</span></li>
+            <li><span class="price__n">Чёлка-шторка</span><span class="price__v">500 – 600 ₽</span></li>
+            <li><span class="price__n">Подравнивание</span><span class="price__v">600 – 800 ₽</span></li>
+            <li><span class="price__n">Подравнивание с мытьём</span><span class="price__v">1 000 ₽</span></li>
+          </ul>
+
+          <h3 class="grp">У топ-мастера студии<span class="grp__b">Мария</span></h3>
+          <ul class="price">
+            <li><span class="price__n">Женская стрижка</span><span class="price__v">2 300 – 2 500 ₽</span></li>
+            <li><span class="price__n">Мужская стрижка</span><span class="price__v">1 700 ₽</span></li>
+            <li><span class="price__n">Подравнивание</span><span class="price__v">1 200 ₽</span></li>
+            <li><span class="price__n">Чёлка</span><span class="price__v">300 – 500 ₽</span></li>
+            <li><span class="price__n">Чёлка-шторка</span><span class="price__v">700 ₽</span></li>
+            <li><span class="price__n">Подравнивание с мытьём</span><span class="price__v">1 700 ₽</span></li>
+          </ul>
+        </div>
+
+        <div class="panel" id="p-color" role="tabpanel" aria-labelledby="t-color" tabindex="0" hidden>
+          <h3 class="grp">Однотонное окрашивание</h3>
+          <ul class="price">
+            <li><span class="price__n">Окрашивание корней</span><span class="price__v">3 000 – 5 500 ₽</span></li>
+            <li><span class="price__n">Короткие волосы</span><span class="price__v">3 000 – 5 500 ₽</span></li>
+            <li><span class="price__n">Средняя длина</span><span class="price__v">3 500 – 7 500 ₽</span></li>
+            <li><span class="price__n">Длинные волосы</span><span class="price__v">5 000 – 9 000 ₽</span></li>
+          </ul>
+
+          <h3 class="grp">Сложное — у мастера студии</h3>
+          <ul class="price">
+            <li><span class="price__n">Короткие волосы</span><span class="price__v">6 000 – 9 000 ₽</span></li>
+            <li><span class="price__n">Средняя длина</span><span class="price__v">9 000 – 13 000 ₽</span></li>
+            <li><span class="price__n">Длинные волосы</span><span class="price__v">13 000 – 18 000 ₽</span></li>
+            <li><span class="price__n">Контуринг</span><span class="price__v">5 500 – 8 000 ₽</span></li>
+          </ul>
+
+          <h3 class="grp">Сложное — у топ-мастера<span class="grp__b">Мария</span></h3>
+          <ul class="price">
+            <li><span class="price__n">Короткие волосы</span><span class="price__v">7 000 – 10 000 ₽</span></li>
+            <li><span class="price__n">Средняя длина</span><span class="price__v">12 000 – 15 000 ₽</span></li>
+            <li><span class="price__n">Длинные волосы</span><span class="price__v">15 000 – 20 000 ₽</span></li>
+            <li><span class="price__n">Контуринг</span><span class="price__v">7 000 – 10 000 ₽</span></li>
+          </ul>
+          <p class="panel__note">Сложное окрашивание — это air touch, балаяж, шатуш, тонирование и контуринг. Технику подбирает мастер под ваш исходный цвет и состояние волос.</p>
+        </div>
+
+        <div class="panel" id="p-care" role="tabpanel" aria-labelledby="t-care" tabindex="0" hidden>
+          <h3 class="grp">Уход</h3>
+          <ul class="price">
+            <li><span class="price__n">«Счастье для волос» Label<em>цена зависит от длины</em></span><span class="price__v">2 000 – 5 500 ₽</span></li>
+          </ul>
+          <p class="panel__note">Восстанавливающая процедура — её чаще всего берут вместе с окрашиванием или после осветления. В отзывах её отдельно отмечают у мастера Ольги.</p>
+        </div>
+
+        <div class="panel" id="p-brow" role="tabpanel" aria-labelledby="t-brow" tabindex="0" hidden>
+          <h3 class="grp">Брови</h3>
+          <ul class="price">
+            <li><span class="price__n">Коррекция бровей<em>пинцет / воск</em></span><span class="price__v">700 ₽</span></li>
+            <li><span class="price__n">Окрашивание бровей</span><span class="price__v">700 ₽</span></li>
+            <li><span class="price__n">Коррекция + окрашивание бровей</span><span class="price__v">1 200 ₽</span></li>
+            <li><span class="price__n">Ламинирование бровей</span><span class="price__v">1 500 ₽</span></li>
+            <li><span class="price__n">Ламинирование бровей с окрашиванием</span><span class="price__v">1 900 ₽</span></li>
+          </ul>
+
+          <h3 class="grp">Ресницы и лицо</h3>
+          <ul class="price">
+            <li><span class="price__n">Ламинирование ресниц</span><span class="price__v">1 900 ₽</span></li>
+            <li><span class="price__n">Окрашивание ресниц</span><span class="price__v">400 ₽</span></li>
+            <li><span class="price__n">Удаление волос с зоны лица<em>1 зона</em></span><span class="price__v">300 ₽</span></li>
+          </ul>
+        </div>
+
+        <div class="panel" id="p-look" role="tabpanel" aria-labelledby="t-look" tabindex="0" hidden>
+          <h3 class="grp">Образы</h3>
+          <ul class="price">
+            <li><span class="price__n">Макияж</span><span class="price__v">2 000 – 2 500 ₽</span></li>
+            <li><span class="price__n">Укладка</span><span class="price__v">1 000 – 1 500 ₽</span></li>
+            <li><span class="price__n">Причёска</span><span class="price__v">2 000 – 2 500 ₽</span></li>
+            <li><span class="price__n">Вечерний образ</span><span class="price__v">от 4 000 ₽</span></li>
+          </ul>
+          <p class="panel__note">Вечерний образ — это причёска и макияж вместе. На свадьбу и съёмку лучше записываться заранее: такие слоты разбирают быстро.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="services__cta reveal">
+      <p>Не уверены, что выбрать? Напишите — подскажем услугу и мастера под вашу задачу.</p>
+      <a class="btn" href="https://wa.me/79230456969" target="_blank" rel="noopener">Спросить в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="place" id="contact">
+  <svg class="edge edge--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path filter="url(#torn-b)" d="M0,70 L90,45 L184,75 L278,41 L382,67 L470,35 L576,71 L666,43 L764,79 L856,47 L954,73 L1048,39 L1146,69 L1240,43 L1344,75 L1440,50 L1440,168 L0,168 Z"/>
+  </svg>
+
+  <div class="wrap">
+    <header class="shead shead--inv reveal">
+      <p class="shead__k">05 — Адрес</p>
+      <h2 class="shead__h">Где мы на карте</h2>
+      <p class="shead__p">
+        Прибрежный микрорайон, Кировский округ. Приём по предварительной записи —
+        приходите к назначенному времени, сидеть в очереди не придётся.
+      </p>
+    </header>
+
+    <div class="place__map reveal" data-d="60">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?text=%D0%9E%D0%BC%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9F%D0%B5%D1%80%D0%B5%D0%BB%D1%91%D1%82%D0%B0%2C%2032&amp;z=17"
+        title="Карта: улица Перелёта, 32, Омск"
+        loading="lazy" allowfullscreen></iframe>
+    </div>
+
+    <div class="place__grid">
+      <div class="place__info">
+        <div class="cblock reveal">
+          <p class="cblock__k">Адрес</p>
+          <p class="cblock__v">ул. Перелёта, 32<br><span>Прибрежный микрорайон, Кировский округ, Омск, 644119</span></p>
+          <a class="maplink" href="https://2gis.ru/omsk/firm/70000001047108090" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Открыть карточку в 2ГИС
+          </a>
+        </div>
+
+        <div class="cblock reveal" data-d="60">
+          <p class="cblock__k">Часы работы</p>
+          <p class="cblock__v">Открывается в 10:00<br><span>Приём строго по предварительной записи</span></p>
+        </div>
+
+        <div class="cblock reveal" data-d="100">
+          <p class="cblock__k">Телефон</p>
+          <a class="cblock__big" href="tel:+79230456969">+7 923 045-69-69</a>
+        </div>
+
+        <div class="cblock reveal" data-d="140">
+          <p class="cblock__k">Мессенджеры</p>
+          <div class="msg">
+            <a class="msg__b" href="https://wa.me/79230456969" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="msg__b" href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener">Telegram</a>
+            <a class="msg__b" href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Max</a>
+          </div>
+        </div>
+
+        <div class="cblock reveal" data-d="180">
+          <p class="cblock__k">Оплата</p>
+          <p class="cblock__v">Карта · наличные · QR-код<br><span>Для гостей студии есть Wi-Fi</span></p>
+        </div>
+      </div>
+
+      <div class="place__form reveal" data-d="80">
+        <form class="form" id="form" novalidate>
+          <p class="form__h">Оставьте заявку</p>
+          <p class="form__sub">Заполните — заявка скопируется в буфер, и откроется чат в Max. Останется вставить её и отправить.</p>
+
+          <label class="field">
+            <span class="field__l">Как вас зовут</span>
+            <input type="text" name="name" id="f-name" autocomplete="name" placeholder="Имя" required>
+          </label>
+
+          <label class="field">
+            <span class="field__l">Телефон</span>
+            <input type="tel" name="phone" id="f-phone" autocomplete="tel" placeholder="+7 ___ ___-__-__" required>
+          </label>
+
+          <label class="field">
+            <span class="field__l">Услуга</span>
+            <select name="service" id="f-service">
+              <option>Женская стрижка</option>
+              <option>Мужская стрижка</option>
+              <option>Детская стрижка</option>
+              <option>Однотонное окрашивание</option>
+              <option>Сложное окрашивание</option>
+              <option>Уход «Счастье для волос»</option>
+              <option>Брови: коррекция и окрашивание</option>
+              <option>Ламинирование ресниц</option>
+              <option>Укладка или причёска</option>
+              <option>Макияж, вечерний образ</option>
+              <option>Не знаю, нужна консультация</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__l">Мастер <em>по желанию</em></span>
+            <select name="master" id="f-master">
+              <option>Любой свободный</option>
+              <option>Мария (топ-мастер)</option>
+              <option>Ангелина</option>
+              <option>Татьяна</option>
+              <option>Юлиана</option>
+              <option>Ольга</option>
+              <option>Наталья</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__l">Удобное время <em>по желанию</em></span>
+            <input type="text" name="when" id="f-when" placeholder="Например: суббота после 14:00">
+          </label>
+
+          <button class="btn btn--block btn--lg" type="submit">
+            <span class="btn__t">Отправить в Max</span>
+          </button>
+          <p class="form__err" id="form-err" role="alert" hidden></p>
+          <p class="form__fine">Или просто позвоните: <a href="tel:+79230456969">+7 923 045-69-69</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <svg class="edge edge--bot" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path filter="url(#torn-a)" d="M0,58 L98,81 L190,49 L296,75 L384,43 L490,69 L584,39 L688,77 L776,47 L880,71 L972,41 L1076,65 L1168,37 L1270,73 L1358,45 L1440,64 L1440,168 L0,168 Z"/>
+  </svg>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">06 — Отзывы</p>
+      <h2 class="shead__h">Отзывы клиентов</h2>
+      <p class="shead__p">
+        Реальные отзывы с карточки 2ГИС — без правок и без бонусов за отзыв.
+        Всего их 77, здесь девять.
+      </p>
+    </header>
+
+    <div class="rating reveal" data-d="60">
+      <div class="rating__score">
+        <span class="rating__num">5,0</span>
+        <span class="rating__stars" aria-hidden="true">★★★★★</span>
+      </div>
+      <dl class="rating__meta">
+        <div><dt>оценок</dt><dd data-count="119">119</dd></div>
+        <div><dt>отзывов</dt><dd data-count="77">77</dd></div>
+      </dl>
+      <p class="rating__seal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Организация подтверждена<br>в справочнике 2ГИС
+      </p>
+      <a class="rating__link" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+        <span class="gis"><img src="assets/brand/2gis.png" alt="" width="136" height="136">2ГИС</span>Читать все 77 отзывов
+      </a>
+    </div>
+
+    <div class="slider reveal" data-d="100">
+      <div class="slider__nav">
+        <button class="slider__b" id="rev-prev" type="button" aria-label="Предыдущие отзывы">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="slider__b" id="rev-next" type="button" aria-label="Следующие отзывы">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="slider__track" id="revTrack">
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">Е</span>
+            <span class="rev__id">
+              <b class="rev__who">Екатерина Мотовилова</b>
+              <span class="rev__meta">10 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Чудесная студия, приятная обстановка, мастера профессионалы, все на высшем уровне, окрашивание в сложной технике выполнено шикарно… Мастер Ангелина приятная в общении и профи в своём деле</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">Y</span>
+            <span class="rev__id">
+              <b class="rev__who">Yuliya Panchenko</b>
+              <span class="rev__meta">6 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Хочу поблагодарить мастера Татьяну: делала у нее сложное окрашивание. Получилось классно… ВСЕ девочки в студии очень милые, улыбчивые, доброжелательные. Это студия с честными отзывами (без всяких скидок и бонусов за отзыв)</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">Д</span>
+            <span class="rev__id">
+              <b class="rev__who">Дарья Касаткина</b>
+              <span class="rev__meta">12 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Мастер Юлиана учла все пожелания, причёска понравилась, всё так, как я хотела</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">П</span>
+            <span class="rev__id">
+              <b class="rev__who">Полина Килькова</b>
+              <span class="rev__meta">отзыв</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Я пришла с очень длинными, но сильно осветлёнными и повреждёнными волосами… Юлиана сделала все реально идеально! Волосы ожили, стали выглядеть ухоженными и объёмными</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">М</span>
+            <span class="rev__id">
+              <b class="rev__who">Марина М.</b>
+              <span class="rev__meta">41 отзыв</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Являюсь клиентом студии уже несколько лет. Все мастера всегда делают свою работу на отлично… Особенно моё сердце принадлежит мастеру по волосам Ангелине, мастеру по бровям Ольге, визажисту Валерии</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">О</span>
+            <span class="rev__id">
+              <b class="rev__who">Ольга Цыганова</b>
+              <span class="rev__meta">6 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Замечательный сервис, душевный подход к клиентам, качество материалов и работы по окрашиванию. Много лет обслуживают у Марии</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">А</span>
+            <span class="rev__id">
+              <b class="rev__who">Анна В.</b>
+              <span class="rev__meta">6 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Являюсь клиентом студии уже несколько лет… хожу к топ-мастеру Марии, профессионал своего дела! Выполнит любой ваш каприз</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">Е</span>
+            <span class="rev__id">
+              <b class="rev__who">Елена Добрынина</b>
+              <span class="rev__meta">7 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Ходим сюда с мужем, нам очень нравится, персонал приветливый, а мастера профессионалы своего дела</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+
+        <figure class="rev">
+          <div class="rev__top">
+            <span class="rev__av" aria-hidden="true">С</span>
+            <span class="rev__id">
+              <b class="rev__who">Снежанна Голубева</b>
+              <span class="rev__meta">10 отзывов</span>
+            </span>
+          </div>
+          <blockquote class="rev__text">Самый лучший салон, хожу больше 4 лет, с самого открытия. Мастера топ, сервис отличный, все дружелюбные!</blockquote>
+          <button class="rev__more" type="button">Читать дальше</button>
+          <a class="rev__src" href="https://2gis.ru/omsk/firm/70000001047108090/tab/reviews" target="_blank" rel="noopener">
+            <img src="assets/brand/2gis.png" alt="" width="136" height="136">
+            <span>Смотреть на 2ГИС</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <header class="shead reveal">
+      <p class="shead__k">07 — Вопросы</p>
+      <h2 class="shead__h">Частые вопросы</h2>
+      <p class="shead__p">Всё, что чаще всего спрашивают перед первым визитом.</p>
+    </header>
+
+    <div class="faq__list reveal" data-d="60">
+      <details>
+        <summary>Как к вам записаться?</summary>
+        <div class="faq__a">
+          Напишите в <a href="https://wa.me/79230456969" target="_blank" rel="noopener">WhatsApp</a>,
+          <a href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener">Telegram</a> или
+          <a href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Max</a> —
+          или просто позвоните: <a href="tel:+79230456969">+7 923 045-69-69</a>. Форма на сайте собирает
+          заявку и открывает WhatsApp с готовым сообщением, останется нажать «отправить».
+        </div>
+      </details>
+
+      <details>
+        <summary>Какой у вас график работы?</summary>
+        <div class="faq__a">
+          Студия работает только по предварительной записи, открывается в 10:00. Поэтому время
+          согласовывается заранее — прийти без записи и подождать в очереди не получится.
+        </div>
+      </details>
+
+      <details>
+        <summary>Какие способы оплаты вы принимаете?</summary>
+        <div class="faq__a">
+          Оплатить можно картой, наличными или по QR-коду.
+        </div>
+      </details>
+
+      <details>
+        <summary>Где вы находитесь?</summary>
+        <div class="faq__a">
+          Омск, ул. Перелёта, 32 — Прибрежный микрорайон, Кировский округ, 644119.
+          Точка на карте и маршрут есть в
+          <a href="https://2gis.ru/omsk/firm/70000001047108090" target="_blank" rel="noopener">карточке 2ГИС</a>.
+        </div>
+      </details>
+
+      <details>
+        <summary>Стрижёте ли вы детей?</summary>
+        <div class="faq__a">
+          Да, детская стрижка есть в прайсе — 600–800 ₽ у мастера студии.
+        </div>
+      </details>
+
+      <details>
+        <summary>А мужские стрижки делаете?</summary>
+        <div class="faq__a">
+          Да. Мужская стрижка у мастера студии — 800–1 000 ₽, в неё входят стрижка, мытьё и укладка феном.
+          У топ-мастера мужская стрижка стоит 1 700 ₽.
+        </div>
+      </details>
+
+      <details>
+        <summary>Чем топ-мастер отличается от мастера студии?</summary>
+        <div class="faq__a">
+          Это разные уровни записи с разной стоимостью: например, женская стрижка у мастера студии —
+          1 200–1 500 ₽, а у топ-мастера — 2 300–2 500 ₽. Топ-мастер студии — Мария Булгакова,
+          владелица «Мастерской».
+        </div>
+      </details>
+
+      <details>
+        <summary>Почему цены указаны вилкой, а не точной суммой?</summary>
+        <div class="faq__a">
+          Расход материала и время работы зависят от длины и густоты волос, поэтому в прайсе стоит
+          диапазон. Точную сумму мастер называет на консультации перед началом работы. Цены на сайте
+          носят информационный характер и не являются публичной офертой.
+        </div>
+      </details>
+
+      <details>
+        <summary>Есть ли у вас Wi-Fi?</summary>
+        <div class="faq__a">
+          Да, для гостей студии есть Wi-Fi. Это удобно на долгих процедурах — сложное окрашивание
+          занимает несколько часов.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <span class="brand__mark" aria-hidden="true"><img src="assets/brand/logo.jpg" alt="" width="320" height="320"></span>
+        <p class="foot__name">Мастерская по созданию красоты</p>
+        <p class="foot__tag">Дизайнер ваших волос · Омск</p>
+      </div>
+      <nav class="foot__nav" aria-label="Навигация в подвале">
+        <a href="#works">Работы</a>
+        <a href="#why">О студии</a>
+        <a href="#team">Мастера</a>
+        <a href="#services">Цены</a>
+        <a href="#contact">Где мы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <div class="foot__c">
+        <a class="foot__tel" href="tel:+79230456969">+7 923 045-69-69</a>
+        <p>ул. Перелёта, 32<br>Прибрежный м-н, Кировский округ, Омск, 644119</p>
+        <p>Открывается в 10:00 · только по записи</p>
+        <p>Оплата: карта · наличные · QR-код</p>
+
+        <div class="foot__msg">
+          <a href="https://wa.me/79230456969" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://t.me/masterskaya_beauty" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://max.ru/u/f9LHodD0cOLDGrkwRgeBNztqMJz0TiQ5OtfnuzsTziWRLTBsLZ93xNICnQE" target="_blank" rel="noopener">Max</a>
+        </div>
+
+        <a class="foot__gis" href="https://2gis.ru/omsk/firm/70000001047108090" target="_blank" rel="noopener">
+          <span class="gis"><img src="assets/brand/2gis.png" alt="" width="136" height="136">2ГИС</span>Карточка студии · 5,0 по 119 оценкам
+        </a>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <p>ИП Булгакова Мария Викторовна</p>
+      <p>Цены на сайте носят информационный характер и не являются публичной офертой.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden>
+  <button class="lb__x" id="lb-x" aria-label="Закрыть">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb__nav lb__nav--p" id="lb-p" aria-label="Предыдущее фото">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button class="lb__nav lb__nav--n" id="lb-n" aria-label="Следующее фото">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+  <figure class="lb__fig">
+    <img id="lb-img" src="" alt="" referrerpolicy="no-referrer">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
+
+<script src="assets/vendor/rough.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

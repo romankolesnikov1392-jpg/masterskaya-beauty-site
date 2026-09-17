@@ -1,0 +1,63 @@
+# Зависимости
+node_modules/
+
+# Сборка
+dist/
+build/
+.astro/
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+.vercel/
+.netlify/
+
+# Переменные окружения
+.env
+.env.*
+!.env.example
+
+# Ключи, токены, учётные данные
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+id_rsa*
+secrets.json
+credentials.json
+*credentials*
+*secret*
+*.token
+.npmrc
+.netrc
+.aws/
+gha-creds-*.json
+
+# Локальные настройки инструментов
+.claude/settings.local.json
+.claude/*.local.json
+.aider*
+.env.local
+
+# ОС
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Логи и временное
+*.log
+npm-debug.log*
+yarn-error.log*
+tmp/
+temp/
+_tmp_*/
