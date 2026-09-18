@@ -136,7 +136,9 @@
       img.alt = cap;
       img.width = IMG[slug].n[0];
       img.height = IMG[slug].n[1];
-      img.loading = i < 4 ? 'eager' : 'lazy';
+      // Галерея всегда ниже первого экрана — грузим только лениво,
+      // иначе декодирование картинок отъедает главный поток на старте.
+      img.loading = 'lazy';
       img.decoding = 'async';
       // Пока файла нет — плитка честно говорит об этом, а не висит пустой
       img.addEventListener('error', function () {
