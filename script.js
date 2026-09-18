@@ -20,6 +20,13 @@
     return 'assets/img/' + slug + '-' + ws[ws.length - 1] + '.webp';
   }
 
+  // Декоративная отрисовка rough.js съедает главный поток на старте, а все
+  // рисунки лежат ниже первого экрана — откладываем их до простоя браузера.
+  function whenIdle(fn) {
+    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 2500 });
+    else setTimeout(fn, 250);
+  }
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -213,7 +220,7 @@
     return s;
   }
 
-  if (window.rough) {
+  if (window.rough) whenIdle(function () {
     document.querySelectorAll('.plate[data-fig]').forEach(function (plate, n) {
       var fig = FIGS[plate.dataset.fig];
       var host = plate.querySelector('.plate__fig');
@@ -240,14 +247,13 @@
       }));
       mark.appendChild(ms);
     }
-  }
-
-  document.querySelectorAll('.plate__fig').forEach(function (host) {
-    host.querySelectorAll('path').forEach(function (p, i) {
-      var len = 600;
-      try { len = Math.ceil(p.getTotalLength()) + 2; } catch (e) {}
-      p.style.setProperty('--len', len);
-      p.style.setProperty('--i', i);
+    document.querySelectorAll('.plate__fig').forEach(function (host) {
+      host.querySelectorAll('path').forEach(function (p, i) {
+        var len = 600;
+        try { len = Math.ceil(p.getTotalLength()) + 2; } catch (e) {}
+        p.style.setProperty('--len', len);
+        p.style.setProperty('--i', i);
+      });
     });
   });
 
@@ -337,7 +343,7 @@
 
   function redrawSketches() { drawTray(); drawFrames(); }
 
-  redrawSketches();
+  whenIdle(redrawSketches);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(redrawSketches);
 
   var sketchTimer;
@@ -703,7 +709,7 @@
     'Н': [['p', [[18, 18], [18, 92]]], ['p', [[82, 18], [82, 92]]], ['p', [[18, 55], [82, 55]]]]
   };
 
-  if (window.rough) {
+  if (window.rough) whenIdle(function () {
     document.querySelectorAll('.mcard[data-ini]').forEach(function (card, n) {
       var strokes = STROKES[card.dataset.ini];
       var host = card.querySelector('.mcard__mono');
@@ -726,7 +732,7 @@
 
       host.appendChild(svg);
     });
-  }
+  });
 
   /* ---------- Карта грузится, только когда доскроллили ----------
      Виджет Яндекса тянет ~700 КБ, поэтому не трогаем его до появления блока. */
