@@ -9,11 +9,11 @@
 <meta property="og:title" content="Мастерская по созданию красоты — Омск">
 <meta property="og:description" content="Дизайнер ваших волос. Стрижки, сложное окрашивание, уход, брови и ресницы. 5,0 на 2ГИС.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/photos/video-1-1920.jpg">
+<meta property="og:image" content="assets/photos/hero.jpg">
 <link rel="icon" href="assets/brand/logo.jpg" type="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/photos/video-1-1920.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/photos/hero.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Onest:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -115,11 +115,9 @@
 
 <section class="hero" id="top">
   <div class="hero__media">
-    <img src="assets/photos/video-1-1920.jpg"
-         srcset="assets/photos/video-1-950.jpg 950w,
-                 assets/photos/video-1-1920.jpg 1920w"
-         sizes="100vw" width="1920" height="1080"
-         alt="Мастер студии моет голову клиентке перед стрижкой" fetchpriority="high">
+    <img src="assets/photos/hero.jpg"
+         sizes="100vw" width="1440" height="1920"
+         alt="Мастер студии за работой" fetchpriority="high">
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
 
@@ -217,7 +215,7 @@
   <div class="gal" id="gal"></div>
 
   <div class="wrap">
-    <a class="btn btn--ghost works__all" href="https://2gis.ru/omsk/gallery/firm/70000001047108090" target="_blank" rel="noopener">Вся галерея — 65 фото и 2 видео в 2ГИС</a>
+    <button class="btn btn--ghost works__all" id="gal-all" type="button">Полная галерея</button>
   </div>
 </section>
 
@@ -352,11 +350,6 @@
         </div>
       </article>
     </div>
-
-    <p class="team__note">
-      Личных фотографий мастеров в открытых источниках нет, поэтому на карточках — работы студии
-      по профилю мастера, а не портреты. Имена, специализации и цитаты взяты из отзывов на 2ГИС.
-    </p>
   </div>
 </section>
 

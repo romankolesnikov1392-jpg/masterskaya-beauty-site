@@ -121,6 +121,17 @@
     gal.appendChild(frag);
   }
 
+  /* ---------- «Полная галерея»: раскрыть все фото ---------- */
+
+  var galAll = document.getElementById('gal-all');
+  if (galAll && gal) {
+    galAll.addEventListener('click', function () {
+      var open = gal.classList.toggle('is-all');
+      galAll.textContent = open ? 'Свернуть галерею' : 'Полная галерея';
+      if (!open) gal.scrollLeft = 0;
+    });
+  }
+
   /* ---------- Появление при скролле ---------- */
 
   var io = null;
@@ -254,16 +265,31 @@
 
     var s = svgEl('0 0 ' + w + ' ' + h);
     var rc = rough.svg(s);
-    var o = { stroke: 'currentColor', strokeWidth: 2, roughness: 2.3, bowing: 1.3, seed: 23 };
 
-    s.appendChild(rc.rectangle(3, 3, w - 6, h - 6, o));
-
-    // Перегородки только на широком экране: на мобильном шаги стали
-    // горизонтальной каруселью, линии поперёк неё резали бы карточки.
     if (w > 860) {
+      // Десктоп: рамка лотка с двумя перегородками
+      var o = { stroke: 'currentColor', strokeWidth: 2, roughness: 2.3, bowing: 1.3, seed: 23 };
+      s.appendChild(rc.rectangle(3, 3, w - 6, h - 6, o));
       var t = (w - 6) / 3;
       s.appendChild(rc.line(3 + t, 28, 3 + t, h - 28, o));
       s.appendChild(rc.line(3 + t * 2, 28, 3 + t * 2, h - 28, o));
+    } else {
+      // Мобильный: пирамида на кирпичной стене — разделители «мелом».
+      // Позиции берём из реальной геометрии шагов, иначе линии разъедутся.
+      // bowing держим низким: мел кладётся неровно, но линия всё же прямая,
+      // при больших значениях rough.js рисует двойную дугу — выходит «линза».
+      var chalk = { stroke: 'rgba(255,255,255,.5)', strokeWidth: 2.2, roughness: 1.6, bowing: 0.4, seed: 47 };
+      var lis = box.querySelectorAll('.route__steps li');
+      if (lis.length === 3) {
+        var bx = box.getBoundingClientRect();
+        var y = Math.round(lis[0].getBoundingClientRect().bottom - bx.top + 15);
+        s.appendChild(rc.line(26, y, w - 26, y + 2, chalk));
+
+        var r2 = lis[1].getBoundingClientRect();
+        var x = Math.round(r2.right - bx.left + 7);
+        var y2 = Math.round(r2.bottom - bx.top - 10);
+        s.appendChild(rc.line(x, y + 20, x - 3, y2, chalk));
+      }
     }
     trayHost.replaceChildren(s);
   }
