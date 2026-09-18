@@ -255,13 +255,19 @@
       }));
       mark.appendChild(ms);
     }
+    // Сначала читаем все длины, потом пишем. Чередование чтения и записи
+    // заставляет браузер пересчитывать layout на каждой итерации.
+    var paths = [];
     document.querySelectorAll('.plate__fig').forEach(function (host) {
       host.querySelectorAll('path').forEach(function (p, i) {
         var len = 600;
         try { len = Math.ceil(p.getTotalLength()) + 2; } catch (e) {}
-        p.style.setProperty('--len', len);
-        p.style.setProperty('--i', i);
+        paths.push([p, len, i]);
       });
+    });
+    paths.forEach(function (x) {
+      x[0].style.setProperty('--len', x[1]);
+      x[0].style.setProperty('--i', x[2]);
     });
   });
 
