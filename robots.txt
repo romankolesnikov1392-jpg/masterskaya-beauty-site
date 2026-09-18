@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://romankolesnikov1392-jpg.github.io/masterskaya-beauty-site/sitemap.xml

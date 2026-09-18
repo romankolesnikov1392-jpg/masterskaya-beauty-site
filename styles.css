@@ -681,6 +681,7 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
   color:rgba(246,240,231,.68);
   max-width:56ch;
 }
+.whead__about{ margin-top:14px; font-size:.94em; color:rgba(246,240,231,.56); }
 
 .plates{
   display:grid;

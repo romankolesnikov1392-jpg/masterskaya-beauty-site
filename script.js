@@ -102,15 +102,25 @@
 
      На мобильном показываются первые 12, остальные 5 помечены desktopOnly. */
 
+  // alt — что реально на фото: его читают скринридеры и поисковики.
   var GALLERY = [
-    { f: 'work-01' }, { f: 'work-02' }, { f: 'work-03' }, { f: 'work-04' },
-    { f: 'work-05' }, { f: 'work-06' }, { f: 'work-07' }, { f: 'work-08' },
-    { f: 'work-09' }, { f: 'work-10' }, { f: 'work-11' }, { f: 'work-12' },
-    { f: 'work-13', desktopOnly: true },
-    { f: 'work-14', desktopOnly: true },
-    { f: 'work-15', desktopOnly: true },
-    { f: 'work-16', desktopOnly: true },
-    { f: 'video-02', desktopOnly: true, isVideo: true }
+    { f: 'work-01', alt: 'Мастер накручивает крупные локоны плойкой' },
+    { f: 'work-02', alt: 'Гладкие длинные волосы после окрашивания в медно-рыжий' },
+    { f: 'work-03', alt: 'Светлые объёмные локоны после окрашивания и укладки' },
+    { f: 'work-04', alt: 'Длинные светлые волосы, уложенные локонами, в кресле мастера' },
+    { f: 'work-05', alt: 'Пепельный блонд на длинных прямых волосах' },
+    { f: 'work-06', alt: 'Гостья студии с блонд-каре после стрижки' },
+    { f: 'work-07', alt: 'Вечерний макияж и гладкая укладка — работа визажиста' },
+    { f: 'work-08', alt: 'Пепельные волны после окрашивания и укладки' },
+    { f: 'work-09', alt: 'Многослойная стрижка на светлых волосах' },
+    { f: 'work-10', alt: 'Холодный серебристо-лиловый оттенок на волнистых волосах' },
+    { f: 'work-11', alt: 'Платиновый блонд после осветления' },
+    { f: 'work-12', alt: 'Плавная растяжка цвета от тёмных корней к светлому блонду' },
+    { f: 'work-13', alt: 'Ламинирование ресниц — результат крупным планом', desktopOnly: true },
+    { f: 'work-14', alt: 'Длинные волосы до и после осветления', desktopOnly: true },
+    { f: 'work-15', alt: 'Собранная вечерняя причёска с локонами у лица', desktopOnly: true },
+    { f: 'work-16', alt: 'Объёмная коса с вплетённой лентой', desktopOnly: true },
+    { f: 'video-02', alt: 'Кадр из видео о студии', desktopOnly: true, isVideo: true }
   ];
 
   var GAL_SIZES = '(max-width:860px) 76vw, 25vw';
@@ -123,7 +133,7 @@
     var frag = document.createDocumentFragment();
 
     GALLERY.forEach(function (p, i) {
-      var cap = p.isVideo ? 'Видео студии' : 'Работа студии';
+      var cap = p.alt;
 
       var el;
       if (p.isVideo) {
@@ -137,7 +147,7 @@
         el.dataset.i = String(i);
       }
       el.className = 'gitem' + (p.desktopOnly ? ' gitem--desktop' : '');
-      el.setAttribute('aria-label', p.isVideo ? cap : 'Открыть фото: ' + cap);
+      el.setAttribute('aria-label', p.isVideo ? 'Смотреть видео студии на 2ГИС' : 'Открыть фото: ' + cap);
 
       var slug = 'g-' + p.f;
       var picture = document.createElement('picture');
@@ -476,6 +486,7 @@
       pre.onload = function () {
         if (svcSrc) svcSrc.srcset = imgSrcset(slug);
         svcImg.src = next;
+        svcImg.alt = tab.dataset.alt || '';
         svcMedia.classList.remove('is-swap');
       };
       pre.onerror = function () { svcMedia.classList.remove('is-swap'); };
