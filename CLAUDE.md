@@ -33,3 +33,12 @@ Skills (.claude/skills/):
 Правило: перед началом любой визуальной доработки — свериться с этим списком и явно указать, какие из скиллов применяются к текущей задаче.
 
 Вместе с ui-ux-pro-max установился его пакет: design, design-system, ui-styling, brand, banner-design, slides. Подключать по профилю задачи (токены, брендинг, баннеры, презентации).
+
+### Восстановление скиллов на новой машине
+
+Папки `.claude/skills/` и `.agents/skills/` в git не хранятся. После клона:
+
+```
+npx skills experimental_install      # 24 скилла по skills-lock.json
+npm install -g ui-ux-pro-max-cli && uipro init --ai claude   # ui-ux-pro-max и его пакет (7 шт.)
+```
