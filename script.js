@@ -20,11 +20,19 @@
     return 'assets/img/' + slug + '-' + ws[ws.length - 1] + '.webp';
   }
 
-  // Декоративная отрисовка rough.js съедает главный поток на старте, а все
-  // рисунки лежат ниже первого экрана — откладываем их до простоя браузера.
-  function whenIdle(fn) {
-    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 2500 });
-    else setTimeout(fn, 250);
+  // Рисование rough.js — тяжёлая синхронная работа, а все рисунки лежат ниже
+  // первого экрана. requestIdleCallback тут не годится: он сваливает всё в одну
+  // длинную задачу. Рисуем ровно тогда, когда блок подходит к экрану.
+  function whenNear(sel, fn) {
+    var el = document.querySelector(sel);
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) return fn();
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      fn();
+    }, { rootMargin: '400px' });
+    io.observe(el);
   }
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -220,7 +228,7 @@
     return s;
   }
 
-  if (window.rough) whenIdle(function () {
+  if (window.rough) whenNear('#why', function () {
     document.querySelectorAll('.plate[data-fig]').forEach(function (plate, n) {
       var fig = FIGS[plate.dataset.fig];
       var host = plate.querySelector('.plate__fig');
@@ -343,8 +351,8 @@
 
   function redrawSketches() { drawTray(); drawFrames(); }
 
-  whenIdle(redrawSketches);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(redrawSketches);
+  whenNear('#trust', drawTray);
+  whenNear('#why', drawFrames);
 
   var sketchTimer;
   window.addEventListener('resize', function () {
@@ -709,7 +717,7 @@
     'Н': [['p', [[18, 18], [18, 92]]], ['p', [[82, 18], [82, 92]]], ['p', [[18, 55], [82, 55]]]]
   };
 
-  if (window.rough) whenIdle(function () {
+  if (window.rough) whenNear('#team', function () {
     document.querySelectorAll('.mcard[data-ini]').forEach(function (card, n) {
       var strokes = STROKES[card.dataset.ini];
       var host = card.querySelector('.mcard__mono');
