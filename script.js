@@ -23,6 +23,22 @@
   // Рисование rough.js — тяжёлая синхронная работа, а все рисунки лежат ниже
   // первого экрана. requestIdleCallback тут не годится: он сваливает всё в одну
   // длинную задачу. Рисуем ровно тогда, когда блок подходит к экрану.
+  // rough.js весит 27 КБ и нужен только для рисунков ниже первого экрана —
+  // подгружаем его при первой надобности, а не на старте.
+  var roughReady = null;
+  function loadRough() {
+    if (roughReady) return roughReady;
+    roughReady = new Promise(function (res) {
+      if (window.rough) return res();
+      var el = document.createElement('script');
+      el.src = 'assets/vendor/rough.min.js?v=10';
+      el.onload = res;
+      el.onerror = function () { res(); };
+      document.head.appendChild(el);
+    });
+    return roughReady;
+  }
+
   function whenNear(sel, fn) {
     var el = document.querySelector(sel);
     if (!el) return;
@@ -230,7 +246,7 @@
     return s;
   }
 
-  if (window.rough) whenNear('#why', function () {
+  whenNear('#why', function () { loadRough().then(function () {
     document.querySelectorAll('.plate[data-fig]').forEach(function (plate, n) {
       var fig = FIGS[plate.dataset.fig];
       var host = plate.querySelector('.plate__fig');
@@ -271,7 +287,7 @@
       x[0].style.setProperty('--len', x[1]);
       x[0].style.setProperty('--i', x[2]);
     });
-  });
+  }); });
 
   /* ---------- Маршрут: лоток с инструментами вместо иконок ---------- */
 
@@ -359,8 +375,8 @@
 
   function redrawSketches() { drawTray(); drawFrames(); }
 
-  whenNear('#trust', drawTray);
-  whenNear('#why', drawFrames);
+  whenNear('#trust', function () { loadRough().then(drawTray); });
+  whenNear('#why', function () { loadRough().then(drawFrames); });
 
   var sketchTimer;
   window.addEventListener('resize', function () {
@@ -725,7 +741,7 @@
     'Н': [['p', [[18, 18], [18, 92]]], ['p', [[82, 18], [82, 92]]], ['p', [[18, 55], [82, 55]]]]
   };
 
-  if (window.rough) whenNear('#team', function () {
+  whenNear('#team', function () { loadRough().then(function () {
     document.querySelectorAll('.mcard[data-ini]').forEach(function (card, n) {
       var strokes = STROKES[card.dataset.ini];
       var host = card.querySelector('.mcard__mono');
@@ -748,7 +764,7 @@
 
       host.appendChild(svg);
     });
-  });
+  }); });
 
   /* ---------- Карта грузится, только когда доскроллили ----------
      Виджет Яндекса тянет ~700 КБ, поэтому не трогаем его до появления блока. */
