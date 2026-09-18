@@ -1686,7 +1686,7 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
   .foot{ padding-bottom:calc(104px + env(safe-area-inset-bottom,0px)); }
 }
 
-@media (max-width:760px){
+@media (max-width:860px){
   .gal{ grid-template-columns:repeat(2,1fr); }
   .hero{ align-items:flex-end; }
   .hero__meta{ gap:20px 32px; }
@@ -1786,7 +1786,7 @@ body.menu-open .fab{ display:none !important; }
 }
 
 /* галерея работ */
-@media (max-width:760px){
+@media (max-width:860px){
   .gal{
     display:flex;
     grid-template-columns:none;
@@ -1828,7 +1828,7 @@ body.menu-open .fab{ display:none !important; }
 }
 
 /* карточки «почему тебе нужно именно к нам» */
-@media (max-width:760px){
+@media (max-width:860px){
   .plates{
     display:flex;
     grid-template-columns:none;
@@ -1905,16 +1905,16 @@ body.menu-open .fab{ display:none !important; }
 }
 
 /* 4. На мобильном убираем пояснение про вилку цен */
-@media (max-width:760px){
+@media (max-width:860px){
   .services .shead__p{ display:none; }
 }
 
 /* 6. Полная галерея: кнопка раскрывает все фото прямо на странице.
       На десктопе все 17 видны сразу, поэтому кнопка там не нужна. */
-@media (min-width:761px){
+@media (min-width:861px){
   .works__all{ display:none; }
 }
-@media (max-width:760px){
+@media (max-width:860px){
   .gal.is-all{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -2022,7 +2022,7 @@ body.menu-open .fab{ display:none !important; }
 }
 
 /* 1. Хиро на мобильном: только заголовок, без надстрочника и описания */
-@media (max-width:760px){
+@media (max-width:860px){
   .hero__eyebrow,
   .hero__lead{ display:none; }
   .hero{ padding-bottom:clamp(74px,11vw,110px); }
