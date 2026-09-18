@@ -398,7 +398,6 @@
     var tabs = Array.prototype.slice.call(pills.querySelectorAll('.pill'));
     var svcMedia = document.querySelector('.svc__media');
     var svcImg = document.getElementById('svc-img');
-    var svcCap = document.getElementById('svc-cap');
 
     function swapPhoto(tab) {
       if (!svcImg || !svcMedia) return;
@@ -410,7 +409,6 @@
       var pre = new Image();
       pre.onload = function () {
         svcImg.src = next;
-        if (svcCap) svcCap.textContent = tab.dataset.cap;
         svcMedia.classList.remove('is-swap');
       };
       pre.onerror = function () { svcMedia.classList.remove('is-swap'); };
