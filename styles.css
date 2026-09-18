@@ -2059,3 +2059,15 @@ body.menu-open .fab{ display:none !important; }
 @media (max-width:860px){
   .route{ padding:clamp(66px,11vw,96px) 0 clamp(62px,10vw,92px); }
 }
+
+/* <picture> не должен влиять на раскладку — позиционируется сам <img> */
+picture{ display:contents; }
+
+/* карта до подгрузки */
+.place__map-hint{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  font-size:.82rem;
+  color:rgba(246,240,231,.5);
+}
+.place__map.is-ready .place__map-hint{ display:none; }

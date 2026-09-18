@@ -5,6 +5,21 @@
 (function () {
   'use strict';
 
+  /* ---------- Картинки: webp + размеры ----------
+     Карта собрана скриптом из assets/img/manifest.json.
+     w — доступные ширины webp, n — родные размеры (для width/height),
+     f — ширина jpg-фоллбэка для старых браузеров. */
+  var IMG = {"hero":{"w":[640,1024,1440],"n":[1440,1920],"f":1024},"work-02":{"w":[400,700,950],"n":[950,633],"f":700},"work-05":{"w":[400,700,950],"n":[950,633],"f":700},"work-06":{"w":[400,700,950],"n":[950,633],"f":700},"work-07":{"w":[400,700,950],"n":[950,633],"f":700},"work-09":{"w":[400,700,950],"n":[950,633],"f":700},"work-13":{"w":[400,700,950],"n":[950,633],"f":700},"work-15":{"w":[400,700,950],"n":[950,633],"f":700},"video-1":{"w":[400,700,950],"n":[950,633],"f":700},"g-work-01":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-02":{"w":[400,720],"n":[720,1280],"f":720},"g-work-03":{"w":[400,800,1080],"n":[1080,1349],"f":800},"g-work-04":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-05":{"w":[400,800,1080],"n":[1080,1350],"f":800},"g-work-06":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-07":{"w":[400,800,1280],"n":[1280,1280],"f":800},"g-work-08":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-09":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-10":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-11":{"w":[400,800,1242],"n":[1242,1522],"f":800},"g-work-12":{"w":[400,800,1440],"n":[1440,2560],"f":800},"g-work-13":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-14":{"w":[400,800,1440],"n":[1440,1088],"f":800},"g-work-15":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-work-16":{"w":[400,800,1440],"n":[1440,1920],"f":800},"g-video-02":{"w":[400,800,1440],"n":[1440,2559],"f":800},"logo":{"w":[128,256,320],"n":[320,320],"f":256}};
+
+  function imgSrcset(slug) {
+    return IMG[slug].w.map(function (w) { return 'assets/img/' + slug + '-' + w + '.webp ' + w + 'w'; }).join(', ');
+  }
+  function imgFallback(slug) { return 'assets/img/' + slug + '-' + IMG[slug].f + '.jpg'; }
+  function imgBiggest(slug) {
+    var ws = IMG[slug].w;
+    return 'assets/img/' + slug + '-' + ws[ws.length - 1] + '.webp';
+  }
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -67,7 +82,7 @@
     { f: 'video-02', desktopOnly: true, isVideo: true }
   ];
 
-  var GAL_DIR = 'assets/gallery/';
+  var GAL_SIZES = '(max-width:860px) 76vw, 25vw';
   var GIS_GALLERY = 'https://2gis.ru/omsk/gallery/firm/70000001047108090';
 
   var gal = document.getElementById('gal');
@@ -77,7 +92,6 @@
     var frag = document.createDocumentFragment();
 
     GALLERY.forEach(function (p, i) {
-      var src = GAL_DIR + p.f + '.jpg';
       var cap = p.isVideo ? 'Видео студии' : 'Работа студии';
 
       var el;
@@ -94,9 +108,19 @@
       el.className = 'gitem' + (p.desktopOnly ? ' gitem--desktop' : '');
       el.setAttribute('aria-label', p.isVideo ? cap : 'Открыть фото: ' + cap);
 
+      var slug = 'g-' + p.f;
+      var picture = document.createElement('picture');
+      var source = document.createElement('source');
+      source.type = 'image/webp';
+      source.srcset = imgSrcset(slug);
+      source.sizes = GAL_SIZES;
+      picture.appendChild(source);
+
       var img = document.createElement('img');
-      img.src = src;
+      img.src = imgFallback(slug);
       img.alt = cap;
+      img.width = IMG[slug].n[0];
+      img.height = IMG[slug].n[1];
       img.loading = i < 4 ? 'eager' : 'lazy';
       img.decoding = 'async';
       // Пока файла нет — плитка честно говорит об этом, а не висит пустой
@@ -104,7 +128,8 @@
         el.classList.add('is-missing');
         el.setAttribute('data-missing', p.f + '.jpg');
       });
-      el.appendChild(img);
+      picture.appendChild(img);
+      el.appendChild(picture);
 
       if (p.isVideo) {
         el.insertAdjacentHTML('beforeend',
@@ -115,7 +140,7 @@
       }
 
       frag.appendChild(el);
-      lbItems.push({ src: src, fallback: src, cap: cap, el: el });
+      lbItems.push({ src: imgBiggest(slug), fallback: imgFallback(slug), cap: cap, el: el });
     });
 
     gal.appendChild(frag);
@@ -401,13 +426,17 @@
 
     function swapPhoto(tab) {
       if (!svcImg || !svcMedia) return;
-      var next = 'assets/photos/' + tab.dataset.photo + '-950.jpg';
+      var slug = tab.dataset.photo;
+      if (!IMG[slug]) return;
+      var next = imgFallback(slug);
       if (svcImg.getAttribute('src') === next) return;
+      var svcSrc = svcMedia.querySelector('source');
 
       // Подгружаем заранее и меняем только после загрузки, иначе на месте
       // фото мелькает пустой блок.
       var pre = new Image();
       pre.onload = function () {
+        if (svcSrc) svcSrc.srcset = imgSrcset(slug);
         svcImg.src = next;
         svcMedia.classList.remove('is-swap');
       };
@@ -698,6 +727,32 @@
       host.appendChild(svg);
     });
   }
+
+  /* ---------- Карта грузится, только когда доскроллили ----------
+     Виджет Яндекса тянет ~700 КБ, поэтому не трогаем его до появления блока. */
+
+  (function lazyMap() {
+    var host = document.querySelector('[data-map]');
+    if (!host) return;
+
+    function load() {
+      if (host.dataset.loaded) return;
+      host.dataset.loaded = '1';
+      var f = document.createElement('iframe');
+      f.src = host.dataset.map;
+      f.title = host.dataset.mapTitle || 'Карта';
+      f.loading = 'lazy';
+      f.allowFullscreen = true;
+      f.addEventListener('load', function () { host.classList.add('is-ready'); });
+      host.appendChild(f);
+    }
+
+    if (!('IntersectionObserver' in window)) return load();
+    var mo = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { mo.disconnect(); load(); }
+    }, { rootMargin: '300px' });
+    mo.observe(host);
+  })();
 
   /* ---------- Курсор ---------- */
 
