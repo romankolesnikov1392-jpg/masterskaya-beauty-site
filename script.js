@@ -579,6 +579,52 @@
     window.addEventListener('resize', revClamp);
   }
 
+  /* ---------- Онлайн-запись: виджет YCLIENTS ---------- */
+
+  // Виджет тянет свой скрипт и стили, поэтому рамку создаём только при первом
+  // открытии — до нажатия кнопки страница о нём ничего не знает.
+  var book = document.getElementById('book');
+  var bookFrame = document.getElementById('book-frame');
+  var bookFocus = null;
+  var bookMade = false;
+
+  function openBook() {
+    bookFocus = document.activeElement;
+    book.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    if (!bookMade) {
+      bookMade = true;
+      var fr = document.createElement('iframe');
+      fr.title = 'Онлайн-запись в студию';
+      fr.setAttribute('allow', 'clipboard-write');
+      fr.addEventListener('load', function () { book.classList.add('is-ready'); });
+      fr.src = document.querySelector('.book__out').href;
+      bookFrame.appendChild(fr);
+    }
+
+    requestAnimationFrame(function () { book.classList.add('is-in'); });
+    document.getElementById('book-x').focus();
+  }
+
+  function closeBook() {
+    book.classList.remove('is-in');
+    document.body.style.overflow = '';
+    setTimeout(function () { book.hidden = true; }, 300);
+    if (bookFocus) bookFocus.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-book]');
+    if (!t) return;
+    e.preventDefault();
+    if (!mobmenu.hidden) closeMenu();
+    openBook();
+  });
+
+  document.getElementById('book-x').addEventListener('click', closeBook);
+  book.addEventListener('click', function (e) { if (e.target === book) closeBook(); });
+
   /* ---------- Лайтбокс ---------- */
 
   var lb = document.getElementById('lb');
@@ -644,6 +690,10 @@
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
 
   document.addEventListener('keydown', function (e) {
+    if (!book.hidden) {
+      if (e.key === 'Escape') closeBook();
+      return;
+    }
     if (!lb.hidden) {
       if (e.key === 'Escape') closeLb();
       if (e.key === 'ArrowLeft') show(seek(idx, -1));
