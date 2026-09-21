@@ -1346,12 +1346,13 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
 
 .place__map{
   position:relative;
-  margin-bottom:clamp(34px,4.6vw,60px);
+  margin-bottom:clamp(26px,3.4vw,40px);
   border-radius:5px;
   overflow:hidden;
   border:1px solid rgba(246,240,231,.16);
   background:var(--ink-2);
-  aspect-ratio:21/9;
+  /* карта заняла место формы, поэтому кадр выше прежнего */
+  aspect-ratio:16/9;
 }
 .place__map iframe{
   width:100%; height:100%;
@@ -1360,30 +1361,6 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
 }
 @media (max-width:760px){ .place__map{ aspect-ratio:4/3; } }
 
-.place__grid{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,.86fr);
-  gap:clamp(36px,5vw,76px);
-  align-items:start;
-}
-@media (max-width:900px){ .place__grid{ grid-template-columns:1fr; } }
-.cblock{ padding:22px 0; border-top:1px solid rgba(246,240,231,.14); }
-.cblock__k{
-  font-size:.66rem; font-weight:500;
-  letter-spacing:.17em; text-transform:uppercase;
-  color:rgba(246,240,231,.44);
-  margin-bottom:10px;
-}
-.cblock__big{
-  font-family:var(--f-disp); font-weight:600;
-  font-size:clamp(1.5rem,3.4vw,2.35rem);
-  letter-spacing:-.05em;
-  color:var(--paper);
-  transition:color .3s ease;
-}
-.cblock__big:hover{ color:var(--clay-2); }
-.cblock__v{ font-size:1.02rem; line-height:1.5; }
-.cblock__v span{ font-size:.86rem; color:rgba(246,240,231,.55); }
 
 .maplink{
   display:inline-flex; align-items:center; gap:8px;
@@ -1397,100 +1374,7 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
 .maplink svg{ width:17px; height:17px; }
 .maplink:hover{ color:var(--paper); border-color:var(--paper); gap:12px; }
 
-.msg{ display:flex; flex-wrap:wrap; gap:9px; }
-.msg__b{
-  font-size:.86rem; font-weight:500;
-  padding:11px 20px;
-  border:1px solid rgba(246,240,231,.26);
-  border-radius:999px;
-  transition:background-color .3s var(--ease-out), border-color .3s var(--ease-out), color .3s var(--ease-out), transform .18s var(--ease-out);
-}
-.msg__b:hover{ background:var(--clay); border-color:var(--clay); color:#fff; }
-.msg__b:active{ transform:scale(.965); }
 
-.form{
-  background:var(--ink-2);
-  border:1px solid rgba(246,240,231,.13);
-  border-radius:4px;
-  padding:clamp(26px,3.4vw,40px);
-}
-.form__h{
-  font-family:var(--f-disp); font-weight:600;
-  font-size:1.35rem; letter-spacing:-.04em;
-  margin-bottom:8px;
-}
-.form__sub{
-  font-size:.85rem; font-weight:300;
-  color:rgba(246,240,231,.55);
-  margin-bottom:26px;
-}
-.field{ display:block; margin-bottom:16px; }
-.field__l{
-  display:block;
-  font-size:.7rem; font-weight:500;
-  letter-spacing:.11em; text-transform:uppercase;
-  color:rgba(246,240,231,.5);
-  margin-bottom:8px;
-}
-.field__l em{ font-style:normal; text-transform:none; letter-spacing:0; opacity:.6; }
-.field input,
-.field select{
-  width:100%;
-  font-family:var(--f-body); font-size:.97rem;
-  color:var(--paper);
-  background:rgba(246,240,231,.05);
-  border:1px solid rgba(246,240,231,.16);
-  border-radius:3px;
-  padding:14px 15px;
-  transition:border-color .26s ease, background-color .26s ease;
-  -webkit-appearance:none; appearance:none;
-}
-.field select{
-  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%23F6F0E7' stroke-width='1.6'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 15px center;
-  padding-right:42px;
-}
-.field select option{ background:var(--ink-2); color:var(--paper); }
-.field input::placeholder{ color:rgba(246,240,231,.3); }
-.field input:focus,
-.field select:focus{
-  outline:none;
-  border-color:var(--clay-2);
-  background:rgba(246,240,231,.08);
-}
-.field input:focus-visible,
-.field select:focus-visible{
-  outline:2px solid var(--clay-2);
-  outline-offset:2px;
-}
-.field.is-bad input{ border-color:#d0674f; }
-
-/* Заявка — запасной путь: кнопка тише, чем «Записаться онлайн» над формой */
-.form .btn{
-  --b-bg:transparent;
-  --b-fg:var(--paper);
-  border-color:rgba(246,240,231,.3);
-  margin-top:10px;
-}
-.form .btn::before{ background:var(--clay); }
-.form .btn:hover{ color:#fff; border-color:var(--clay); }
-.form__err{
-  margin-top:12px;
-  font-size:.82rem;
-  line-height:1.5;
-  color:#E08A71;
-}
-.form__err.is-ok{
-  color:#A8C294;
-  padding-left:12px;
-  border-left:2px solid rgba(168,194,148,.5);
-}
-.form__fine{
-  margin-top:16px; text-align:center;
-  font-size:.83rem; color:rgba(246,240,231,.5);
-}
-.form__fine a{ color:var(--clay-2); border-bottom:1px solid rgba(200,117,72,.4); }
 
 /* ============================================================
    FAQ
@@ -2192,18 +2076,19 @@ picture{ display:contents; }
   60%,100%{ transform:translateX(340%); }
 }
 
-/* Кнопка записи над формой заявки */
-.form__book{ --b-bg:var(--clay); --b-fg:#fff; border-color:var(--clay); }
-.form__book:before{ background:var(--clay-3); }
-.form__or{
-  display:flex; align-items:center; gap:14px;
-  margin:18px 0;
-  font-size:.78rem; font-weight:300;
-  color:rgba(246,240,231,.42);
+/* Под картой: запись и ссылка на карточку 2ГИС */
+.place__act{
+  display:flex; flex-wrap:wrap; align-items:center;
+  gap:clamp(18px,2.6vw,32px);
 }
-.form__or:before,.form__or:after{
-  content:""; flex:1; height:1px;
-  background:rgba(246,240,231,.14);
+.place__cta{ --b-bg:var(--clay); --b-fg:#fff; border-color:var(--clay); }
+.place__cta:before{ background:var(--clay-3); }
+
+/* Цитата закрывает страницу над подвалом */
+.foot__quote{
+  margin:0 0 clamp(30px,4vw,48px);
+  padding-top:0;
+  border-top:0;
 }
 
 @media (max-width:860px){
