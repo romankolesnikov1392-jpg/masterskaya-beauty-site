@@ -14,10 +14,26 @@
   function imgSrcset(slug) {
     return IMG[slug].w.map(function (w) { return 'assets/img/' + slug + '-' + w + '.webp ' + w + 'w'; }).join(', ');
   }
+  // Плитке галереи хватает 800 px: без этого ограничения экран с плотностью 3
+  // выбирал из srcset файл на 1440 px — 192 КБ вместо 43 на каждую картинку.
+  // Крупный файл остаётся за лайтбоксом, его тянут только по клику.
+  function imgSrcsetTile(slug) {
+    return IMG[slug].w.filter(function (w) { return w <= 800; })
+      .map(function (w) { return 'assets/img/' + slug + '-' + w + '.webp ' + w + 'w'; })
+      .join(', ');
+  }
   function imgFallback(slug) { return 'assets/img/' + slug + '-' + IMG[slug].f + '.jpg'; }
-  function imgBiggest(slug) {
+  // Размер под лайтбокс подбираем по экрану, а не берём самый большой файл:
+  // на телефоне 1440 px — это 200–370 КБ ради картинки шириной 390 pt.
+  // Плотность выше двойной для фото незаметна, поэтому её и ограничиваем.
+  function imgForScreen(slug) {
     var ws = IMG[slug].w;
-    return 'assets/img/' + slug + '-' + ws[ws.length - 1] + '.webp';
+    var need = Math.min(window.innerWidth, 1600) * Math.min(window.devicePixelRatio || 1, 2);
+    var pick = ws[ws.length - 1];
+    for (var i = 0; i < ws.length; i++) {
+      if (ws[i] >= need) { pick = ws[i]; break; }
+    }
+    return 'assets/img/' + slug + '-' + pick + '.webp';
   }
 
   // Рисование rough.js — тяжёлая синхронная работа, а все рисунки лежат ниже
@@ -153,7 +169,7 @@
       var picture = document.createElement('picture');
       var source = document.createElement('source');
       source.type = 'image/webp';
-      source.srcset = imgSrcset(slug);
+      source.srcset = imgSrcsetTile(slug);
       source.sizes = GAL_SIZES;
       picture.appendChild(source);
 
@@ -183,10 +199,46 @@
       }
 
       frag.appendChild(el);
-      lbItems.push({ src: imgBiggest(slug), fallback: imgFallback(slug), cap: cap, el: el });
+      lbItems.push({ slug: slug, fallback: imgFallback(slug), cap: cap, el: el });
     });
 
     gal.appendChild(frag);
+  }
+
+  /* ---------- Подогрев плиток галереи ---------- */
+
+  // Ленивая загрузка тянет картинку, когда та почти на экране. На телефоне
+  // галерея — горизонтальная карусель, поэтому следующее фото начинает
+  // грузиться в момент листания, и его видно пустым. Греем заранее: первые
+  // плитки — когда блок подходит к экрану, остальные — на пару шагов вперёд
+  // по ходу листания. Запрос один: настоящая плитка потом берёт его из кэша.
+  var warmed = {};
+  function warmTiles(from, count) {
+    for (var i = Math.max(0, from); i < Math.min(GALLERY.length, from + count); i++) {
+      var f = GALLERY[i].f;
+      if (warmed[f]) continue;
+      warmed[f] = 1;
+      var pre = new Image();
+      pre.sizes = GAL_SIZES;
+      pre.srcset = imgSrcsetTile('g-' + f);
+      pre.src = imgFallback('g-' + f);
+    }
+  }
+
+  if (gal) {
+    whenNear('#works', function () { warmTiles(0, 6); });
+
+    var warmWait = 0;
+    gal.addEventListener('scroll', function () {
+      if (warmWait) return;
+      warmWait = setTimeout(function () {
+        warmWait = 0;
+        var first = gal.firstElementChild;
+        if (!first) return;
+        var step = first.getBoundingClientRect().width + 10;
+        if (step > 1) warmTiles(Math.round(gal.scrollLeft / step), 4);
+      }, 160);
+    }, { passive: true });
   }
 
   /* ---------- «Полная галерея»: раскрыть все фото ---------- */
@@ -651,7 +703,7 @@
       lbImg.onerror = null;
       if (lbImg.src !== it.fallback) lbImg.src = it.fallback;
     };
-    lbImg.src = it.src;
+    lbImg.src = imgForScreen(it.slug);
     lbImg.alt = it.cap;
     lbCap.textContent = it.cap + ' · ' + (idx + 1) + ' из ' + lbItems.length;
   }
