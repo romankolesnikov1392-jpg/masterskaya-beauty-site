@@ -347,21 +347,17 @@
       s.appendChild(rc.line(3 + t, 28, 3 + t, h - 28, o));
       s.appendChild(rc.line(3 + t * 2, 28, 3 + t * 2, h - 28, o));
     } else {
-      // Мобильный: пирамида на кирпичной стене — разделители «мелом».
+      // Мобильный: шаги идут столбиком по кирпичной стене, между ними черта «мелом».
       // Позиции берём из реальной геометрии шагов, иначе линии разъедутся.
       // bowing держим низким: мел кладётся неровно, но линия всё же прямая,
       // при больших значениях rough.js рисует двойную дугу — выходит «линза».
-      var chalk = { stroke: 'rgba(255,255,255,.5)', strokeWidth: 2.2, roughness: 1.6, bowing: 0.4, seed: 47 };
       var lis = box.querySelectorAll('.route__steps li');
-      if (lis.length === 3) {
-        var bx = box.getBoundingClientRect();
-        var y = Math.round(lis[0].getBoundingClientRect().bottom - bx.top + 15);
+      var bx = box.getBoundingClientRect();
+      for (var i = 0; i < lis.length - 1; i++) {
+        // свой seed на каждую черту, иначе обе дрожат одинаково
+        var chalk = { stroke: 'rgba(255,255,255,.5)', strokeWidth: 2.2, roughness: 1.6, bowing: 0.4, seed: 47 + i * 19 };
+        var y = Math.round(lis[i].getBoundingClientRect().bottom - bx.top + 15);
         s.appendChild(rc.line(26, y, w - 26, y + 2, chalk));
-
-        var r2 = lis[1].getBoundingClientRect();
-        var x = Math.round(r2.right - bx.left + 7);
-        var y2 = Math.round(r2.bottom - bx.top - 10);
-        s.appendChild(rc.line(x, y + 20, x - 3, y2, chalk));
       }
     }
     trayHost.replaceChildren(s);

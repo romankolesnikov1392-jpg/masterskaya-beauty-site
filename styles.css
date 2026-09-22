@@ -777,6 +777,7 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
    Услуги
    ============================================================ */
 
+.services .edge--bot{ fill:var(--paper-2); } /* в «Мастеров» */
 .services{
   position:relative;
   background:var(--paper);
@@ -1033,7 +1034,8 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
   max-width:1560px;
   margin-inline:auto;
 }
-.why .edge{ fill:var(--paper-2); }
+.why .edge--top{ fill:var(--paper-2); }   /* рвём «Работы» */
+.why .edge--why{ fill:var(--paper); }     /* в «Услуги и цены» */
 .gitem{
   position:relative;
   overflow:hidden;
@@ -1341,8 +1343,8 @@ body.menu-open .burger span:nth-child(3){ transform:translateY(-6.5px) rotate(-4
   padding:clamp(94px,12vw,158px) 0 clamp(96px,13vw,168px);
   overflow:hidden;
 }
-.place .edge{ fill:var(--paper); }
-.place .edge--bot{ bottom:-1px; top:auto; transform:none; }
+.place .edge--top{ fill:var(--paper-2); }  /* рвём «Мастеров» */
+.place .edge--bot{ fill:var(--paper); bottom:-1px; top:auto; transform:none; } /* в «Отзывы» */
 
 .place__map{
   position:relative;
@@ -1863,12 +1865,12 @@ body.menu-open .fab{ display:none !important; }
     scroll-snap-align:none;
     text-align:center;
   }
-  .route__steps li:first-child{
+  .route__steps li{
     grid-column:1 / -1;
     max-width:19rem;
     margin-inline:auto;
-    padding-bottom:6px;
   }
+  .route__steps li:first-child{ padding-bottom:6px; }
   .route__steps li:not(:last-child)::after{ content:none; }
 
   .route__n{ color:#E8C9A8; }
