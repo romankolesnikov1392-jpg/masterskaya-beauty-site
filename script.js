@@ -508,7 +508,34 @@
     mobmenu.hidden ? openMenu() : closeMenu();
   });
   mobmenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', closeMenu);
+    a.addEventListener('click', function (e) {
+      closeMenu();
+
+      // Переход к разделу делаем руками, а не якорем. Причин две: пока на body
+      // висит overflow:hidden, браузер прокрутку по ссылке просто игнорирует —
+      // меню закрывается, а страница остаётся на месте; и длинная плавная
+      // прокрутка на телефоне обрывается от любого касания экрана.
+      var href = a.getAttribute('href') || '';
+      if (href.charAt(0) !== '#' || href.length < 2) return;
+      var target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      // Два кадра: ждём, пока снимется блокировка прокрутки.
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          var nav = document.querySelector('.nav');
+          var off = (nav ? nav.offsetHeight : 76) + 12;
+          var top = Math.max(0, Math.round(target.getBoundingClientRect().top + window.pageYOffset - off));
+          var root = document.documentElement;
+          var was = root.style.scrollBehavior;
+          root.style.scrollBehavior = 'auto';   // иначе сработает плавная прокрутка из CSS
+          window.scrollTo(0, top);
+          root.style.scrollBehavior = was;
+          if (history.replaceState) history.replaceState(null, '', href);
+        });
+      });
+    });
   });
 
   /* ---------- Прайс: пилюли + фото под активную категорию ---------- */
